@@ -89,7 +89,10 @@ RUN cp raxmlHPC-PTHREADS-SSE3 /usr/bin/
 WORKDIR /
 
 # NCBI
-RUN wget -O- ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.6.0/ncbi-blast-2.6.0+-x64-linux.tar.gz | tar zxvf -
+#RUN wget -O- ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.6.0/ncbi-blast-2.6.0+-x64-linux.tar.gz | tar zxvf -
+
+#LAST
+RUN wget -0- http://last.cbrc.jp/last-926.zip | unzip - 
 
 # Setting paths to all the softwares
 ENV BINPATH /usr/bin
