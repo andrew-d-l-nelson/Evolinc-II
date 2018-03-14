@@ -92,18 +92,26 @@ WORKDIR /
 #RUN wget -O- ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.6.0/ncbi-blast-2.6.0+-x64-linux.tar.gz | tar zxvf -
 
 #LAST
-RUN wget -0- http://last.cbrc.jp/last-926.zip | unzip - 
+RUN wget http://last.cbrc.jp/last-926.zip
+RUN apt-get install -y unzip
+RUN unzip last-926.zip
+WORKDIR last-926
+RUN make
+RUN make install prefix=~
 
 # Setting paths to all the softwares
 ENV BINPATH /usr/bin
 ENV PATH /bedtools2/bin/:$PATH
 ENV PATH /cufflinks-2.2.1.Linux_x86_64/:$PATH
-ENV PATH /ncbi-blast-2.6.0+/bin/:$PATH
+ENV PATH /cufflinks-2.2.1.Linux_x86_64/:$PATH
+ENV PATH /last-926/src/:$PATH
+#ENV PATH /ncbi-blast-2.6.0+/bin/:$PATH
 
 # Add all the scripts to the root directory Path
 ADD *.py *.pl *.R *.sh *.jar /
-RUN chmod +x /Building_Families.sh
-RUN chmod +x /evolinc-part-II.sh && cp /evolinc-part-II.sh $BINPATH
+RUN chmod +x /LastBuilding_Families.sh
+RUN chmod +x /LastReciprocal_BLAST.sh
+RUN chmod +x /LastEvolinc-part-II.sh && cp /LastEvolinc-part-II.sh $BINPATH
 
 ENTRYPOINT ["/evolinc-part-II.sh"]
 CMD ["-h"]
