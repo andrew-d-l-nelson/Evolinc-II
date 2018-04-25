@@ -185,6 +185,9 @@ then
   mkdir Reconciled_trees
   mv ../Final_results/*.reduced Reconciled_trees
   perl /Batch_NOTUNG.pl aligned_list.txt ../../../$species_tree
+  mkdir Phylotree_files
+  cp *bipartitions* Phylotree_files
+  mv Phylotree_files ../../../$output
   mv *png Reconciled_trees
   mv Reconciled_trees  ../../../$output
   cd ../Final_results
