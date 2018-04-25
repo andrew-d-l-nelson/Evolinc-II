@@ -111,7 +111,7 @@ ENV PATH /last-926/src/:$PATH
 ADD *.py *.pl *.R *.sh *.jar /
 RUN chmod +x /LastBuilding_Families.sh
 RUN chmod +x /LastReciprocal_BLAST.sh
-RUN chmod +x /LastEvolinc-part-II.sh && cp /LastEvolinc-part-II.sh $BINPATH
+RUN chmod +x /evolinc-part-II.sh && cp /evolinc-part-II.sh $BINPATH
 
 ENTRYPOINT ["/evolinc-part-II.sh"]
 CMD ["-h"]
